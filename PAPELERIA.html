@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Papeleria Perez | Centro Integral de Copiado, Utiles Escolares, Arte y Regalos</title>
+<style>
+:root {
+--bg-interfaz: #f8fafc;
+--texto-principal: #0f172a;
+--texto-suave: #475569;
+--color-primario: #0284c7;
+--color-secundario: #ec4899;
+--color-exito: #22c55e;
+--color-alerta: #eab308;
+}
+body {
+font-family: sans-serif;
+margin: 0;
+padding: 0;
+background-color: var(--bg-interfaz);
+color: var(--texto-principal);
+line-height: 1.5;
+}
+.seccion, .header-content {
+max-width: 1200px;
+margin: 0 auto;
+text-align: center;
+}
+.seccion { padding: 50px 20px; }
+.header-content, .grid-servicios, .grid-productos, .grid-promos, .grid-pasos {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+.grid-servicios, .grid-productos, .grid-promos, .grid-pasos { flex-direction: row; flex-wrap: wrap; gap: 20px; }
+header {
+background-color: #ffffff;
+padding: 40px 20px;
+border-bottom: 3px solid #e2e8f0;
+}
+.logo-interfaz {
+width: 220px;
+height: auto;
+}
+header h1 {
+margin: 15px 0 5px 0;
+font-size: 3em;
+color: var(--color-primario);
+}
+header p {
+margin: 5px 0 0 0;
+color: var(--texto-suave);
+font-size: 1.2em;
+font-weight: 500;
+}
+nav {
+background-color: #ffffff;
+text-align: center;
+padding: 15px 0;
+position: sticky;
+top: 0;
+z-index: 100;
+border-bottom: 1px solid #e2e8f0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+nav a {
+color: var(--texto-principal);
+text-decoration: none;
+margin: 0 12px;
+font-weight: bold;
+font-size: 0.95em;
+}
+nav a:hover {
+color: var(--color-secundario);
+}
+h2 { font-size: 2.2em; margin-bottom: 5px; color: var(--texto-principal); }
+.subtitulo { color: var(--texto-suave); margin-bottom: 35px; font-size: 1.1em; max-width: 800px; margin-left: auto; margin-right: auto; }
+.tarjeta-servicio, .tarjeta-producto, .tarjeta-promo, .tarjeta-paso, table, details, form {
+background-color: #ffffff;
+border: 1px solid #e2e8f0;
+border-radius: 8px;
+padding: 20px;
+box-sizing: border-box;
+}
+.tarjeta-servicio { width: 270px; text-align: left; }
+.tarjeta-servicio h3 { margin: 0 0 10px 0; color: var(--color-primario); font-size: 1.25em; }
+.tarjeta-servicio p { margin: 0; font-size: 0.9em; color: var(--texto-suave); }
+.tarjeta-producto { width: 225px; text-align: center; }
+.tarjeta-producto img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
+.tarjeta-producto h3 { font-size: 1.1em; margin: 12px 0 5px 0; text-align: left; }
+.tarjeta-producto p { font-size: 0.85em; color: var(--texto-suave); margin: 0 0 12px 0; height: 35px; overflow: hidden; text-align: left; }
+.tarjeta-promo { width: 340px; border-left: 5px solid var(--color-secundario); text-align: left; }
+.tarjeta-promo h3 { margin: 0 0 8px 0; color: var(--color-secundario); }
+.tarjeta-promo p { margin: 0 0 10px 0; font-size: 0.95em; }
+.tarjeta-paso { width: 270px; text-align: center; border-top: 4px solid var(--color-alerta); }
+.tarjeta-paso .numero { font-size: 2em; font-weight: bold; color: var(--color-alerta); margin-bottom: 5px; }
+.tarjeta-paso h3 { margin: 0 0 8px 0; font-size: 1.15em; }
+.tarjeta-paso p { margin: 0; font-size: 0.9em; color: var(--texto-suave); }
+.badge { background-color: #ffe4e6; color: var(--color-secundario); padding: 2px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; }
+.precio-tag { display: inline-block; background-color: #f1f5f9; color: var(--color-primario); padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 0.95em; }
+table { width: 100%; max-width: 750px; margin: 0 auto; border-collapse: collapse; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
+th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+th { background-color: var(--color-primario); color: white; }
+tr:hover { background-color: #f8fafc; }
+details { max-width: 750px; margin: 10px auto; text-align: left; }
+details p { margin: 10px 0 0 0; color: var(--texto-suave); font-size: 0.95em; }
+.bloque-informativo { background-color: #f1f5f9; padding: 20px; border-radius: 8px; max-width: 750px; margin: 20px auto; text-align: left; border-left: 5px solid var(--color-primario); }
+.bloque-informativo h3 { margin: 0 0 8px 0; }
+.bloque-informativo p, .bloque-informativo ul { margin: 0; font-size: 0.95em; color: var(--texto-suave); }
+.bloque-informativo ul { padding-left: 20px; margin-top: 8px; }
+form { max-width: 500px; margin: 0 auto; text-align: left; }
+form label { font-size: 0.95em; font-weight: bold; }
+input, textarea, select { width: 100%; padding: 10px; margin: 6px 0 16px 0; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-family: sans-serif; }
+button { background-color: var(--color-primario); color: white; border: none; padding: 12px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1em; }
+button:hover { background-color: #0369a1; }
+.btn-whatsapp { display: inline-block; background-color: var(--color-exito); color: white; padding: 12px 30px; text-decoration: none; border-radius: 4px; margin-top: 20px; font-weight: bold; }
+.btn-whatsapp:hover { background-color: #16a34a; }
+footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 50px; font-size: 0.9em; }
+footer p { margin: 5px 0; }
+</style>
+</head>
+<body>
+<header>
+<div class="header-content">
+<img src="imagenes/logo.jpeg" alt="Logo Papeleria Perez" class="logo-interfaz">
+<div class="header-textos">
+<h1>Papeleria Perez</h1>
+<p>Surtido Escolar Completo - Centro de Copiado de Alta Velocidad - Regalos y Novedades</p>
+</div>
+</div>
+</header>
+<nav>
+<a href="#servicios">Servicios</a>
+<a href="#utiles">Utiles Escolares</a>
+<a href="#oficina">Oficina y Papel</a>
+<a href="#arte">Arte y Maquetas</a>
+<a href="#regalos">Regalos y Bolsas</a>
+<a href="#proceso">Como Pedir?</a>
+<a href="#promos">Promociones</a>
+<a href="#precios">Precios</a>
+<a href="#contacto">Contacto</a>
+</nav>
+<main>
+<section id="servicios" class="seccion">
+<h2>Servicios de Copiado y Acabados</h2>
+<p class="subtitulo">Preparamos tus guias, manuales, tesis y tareas escolares con equipos digitales modernos para entregas inmediatas.</p>
+<div class="grid-servicios">
+<div class="tarjeta-servicio">
+<h3>Engargolados Reforzados</h3>
+<p>Perforacion paso estandar, espirales plasticos flexibles de todo tamano y pastas plasticas de color (humo, azul, transparente) para proteger apuntes.</p>
+</div>
+<div class="tarjeta-servicio">
+<h3>Copias e Impresiones Laser</h3>
+<p>Produccion de alto volumen en blanco y negro o color. Excelente definicion de textos, tablas y diagramas directo de archivos digitales.</p>
+</div>
+<div class="tarjeta-servicio">
+<h3>Enmicados de Documentos</h3>
+<p>Micas termicas de alta densidad para asegurar la durabilidad de credenciales, calendarios escolares, listados o material didactico.</p>
+</div>
+<div class="tarjeta-servicio">
+<h3>Digitalizacion (Escaneo)</h3>
+<p>Conversion rapida de tus apuntes fisicos, dibujos o tramites a formato PDF. Te los enviamos directo por correo electronico o enlace de WhatsApp.</p>
+</div>
+</div>
+</section>
+<section id="utiles" class="seccion">
+<h2>Utiles Escolares Esenciales</h2>
+<p class="subtitulo">Articulos indispensables de las marcas de papeleria preferidas por los profesores para el trabajo diario en el salon.</p>
+<div class="grid-productos">
+<div class="tarjeta-producto">
+<img src="imagenes/cuaderno.jpg" alt="Cuaderno Profesional">
+<h3>Cuaderno Profesional</h3>
+<p>100 hojas de cuadro grande, chico o raya. Espiral de metal cubierto.</p>
+<span class="precio-tag">$35.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/lapices.jpg" alt="Caja de Colores">
+<h3>Caja de Colores</h3>
+<p>Paquete con 12 colores escolares de mina suave y trazo brillante.</p>
+<span class="precio-tag">$65.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/juego-geometria.jpg" alt="Juego de Geometria">
+<h3>Juego de Geometria</h3>
+<p>Plastico rigido transparente. Incluye regla de 30cm, escuadras y transportador.</p>
+<span class="precio-tag">$45.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/lapiceros.jpg" alt="Boligrafos Basicos">
+<h3>Boligrafos (Punta Media)</h3>
+<p>Paquete clasico de tintas negra, azul y roja para titulos y notas.</p>
+<span class="precio-tag">$18.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/sacapuntas.jpg" alt="Sacapuntas con Deposito">
+<h3>Sacapuntas Escolar</h3>
+<p>Con deposito integrado para basura y navaja metalica de alta precision.</p>
+<span class="precio-tag">$12.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/gomas.jpg" alt="Goma de Borrar">
+<h3>Goma de Borrar M20</h3>
+<p>Bloque de migajon suave que no mancha las hojas ni rompe el papel.</p>
+<span class="precio-tag">$8.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/pegamento.jpg" alt="Pegamento en Barra">
+<h3>Pegamento en Barra 21g</h3>
+<p>Adhesivo de secado rapido, ideal para pegar recortes y hojas sin arrugar.</p>
+<span class="precio-tag">$15.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/tijeras.jpg" alt="Tijeras Escolares">
+<h3>Tijeras Escolares</h3>
+<p>Punta roma de seguridad para estudiantes, mango de plastico ergonomico.</p>
+<span class="precio-tag">$22.00</span>
+</div>
+</div>
+</section>
+<section id="oficina" class="seccion">
+<h2>Consumibles de Oficina y Papel</h2>
+<p class="subtitulo">Papeleria suelta, carpetas y soportes de almacenamiento para entrega inmediata a estudiantes y comercios.</p>
+<div class="grid-productos">
+<div class="tarjeta-producto">
+<img src="imagenes/paquete-hojas.jpg" alt="Paquete de Hojas">
+<h3>Paquete Hojas Carta</h3>
+<p>100 hojas de papel bond blanco de 75 gramos de excelente nitidez.</p>
+<span class="precio-tag">$30.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/hojas-color.jpg" alt="Hojas de Color">
+<h3>Hojas de Color Sueltas</h3>
+<p>Paquete surtido con tonos pastel y fluorescentes para trabajos llamativos.</p>
+<span class="precio-tag">$25.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/folders.jpg" alt="Folders Manila">
+<h3>Folders Tamaño Carta</h3>
+<p>Paquete con 10 piezas color manila para entrega formal de reportes.</p>
+<span class="precio-tag">$20.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/notas.jpg" alt="Notas Adhesivas">
+<h3>Notas Adhesivas</h3>
+<p>Bloque de notas amarillas tipo post-it para recordatorios en cuadernos.</p>
+<span class="precio-tag">$15.00</span>
+</div>
+</div>
+</section>
+<section id="arte" class="seccion">
+<h2>Material de Arte y Maquetas</h2>
+<p class="subtitulo">Herramientas creativas, pinturas, cartulinas y cartones para proyectos escolares artisticos o de ciencias.</p>
+<div class="grid-productos">
+<div class="tarjeta-producto">
+<img src="imagenes/pinturas.jpg" alt="Pintura Escolar">
+<h3>Pintura Escolar Set</h3>
+<p>6 frascos de pintura acrilica base agua lavable con colores primarios.</p>
+<span class="precio-tag">$40.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/pinceles.jpg" alt="Juego de Pinceles">
+<h3>Juego de Pinceles</h3>
+<p>Paquete con 4 piezas de diferentes grosores (pelo suave escolar).</p>
+<span class="precio-tag">$24.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/plastilina.jpg" alt="Barra de Plastilina">
+<h3>Plastilina en Barra</h3>
+<p>Bloque de 10 barras de colores mezclables, no se endurece al aire.</p>
+<span class="precio-tag">$18.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/cascaron.jpg" alt="Papel Cascaron">
+<h3>Papel Cascaron 1/8</h3>
+<p>Soporte rigido ideal para bases de maquetas o carteles de exposicion.</p>
+<span class="precio-tag">$10.00</span>
+</div>
+</div>
+</section>
+<section id="regalos" class="seccion">
+<h2>Regalos, Novedades y Envolturas</h2>
+<p class="subtitulo">Ocurrio un cumpleanos de imprevisto o intercambio escolar? Contamos con opciones de regalos simples a precios accesibles.</p>
+<div class="grid-productos">
+<div class="tarjeta-producto">
+<img src="imagenes/carpetas.jpg" alt="Carpetas de Diseño">
+<h3>Carpetas de Diseno</h3>
+<p>Con herraje de tres argollas de metal y cubiertas plasticas estampadas.</p>
+<span class="precio-tag">$50.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/Plumas.jpg" alt="Boligrafos de Gel">
+<h3>Boligrafos de Gel Locos</h3>
+<p>Modelos de coleccion con personajes animados y tintas de gel de colores.</p>
+<span class="precio-tag">$20.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/bolsas.jpg" alt="Bolsas de Regalo">
+<h3>Bolsas de Regalo Medias</h3>
+<p>Disenos coloridos de carton grueso listos para entregas sorpresa.</p>
+<span class="precio-tag">$15.00</span>
+</div>
+<div class="tarjeta-producto">
+<img src="imagenes/papel-regalo.jpg" alt="Pliego de Papel Regalo">
+<h3>Papel de Regalo Pliego</h3>
+<p>Modelos surtidos de moda (cumpleanos, festividades, infantil).</p>
+<span class="precio-tag">$8.00</span>
+</div>
+</div>
+</section>
+<section id="proceso" class="seccion">
+<h2>Como Funciona Nuestro Servicio Remoto?</h2>
+<p class="subtitulo">Evita las molestas filas en el mostrador escolar siguiendo este sencillo proceso en linea.</p>
+<div class="grid-pasos">
+<div class="tarjeta-paso">
+<div class="numero">1</div>
+<h3>Llenas el Formulario</h3>
+<p>Ecribe tu nombre, indica tus servicios requeridos o lista de utiles en el apartado final de la pagina web.</p>
+</div>
+<div class="tarjeta-paso">
+<div class="numero">2</div>
+<h3>Envias por WhatsApp</h3>
+<p>La plataforma genera un mensaje ordenado. Das clic para ir a WhatsApp y nos adjuntas tus archivos en formato PDF.</p>
+</div>
+<div class="tarjeta-paso">
+<div class="numero">3</div>
+<h3>Recoges sin Filas</h3>
+<p>Te confirmamos el costo final por el chat. Preparamos tus materiales y pasas directo a recogerlos al mostrador fisico.</p>
+</div>
+</div>
+</section>
+<section id="promos" class="seccion">
+<h2>Paquetes y Promociones Escolares</h2>
+<p class="subtitulo">Disenamos paquetes promocionales fijos enfocados en la economia de los estudiantes de la zona.</p>
+<div class="grid-promos">
+<div class="tarjeta-promo">
+<span class="badge">Ahorro Diario</span>
+<h3>Paquete Basico de Cuadernos</h3>
+<p>Lleva 3 cuadernos profesionales (cuadro/raya) y te incluimos un boligrafo negro y un lapiz HB de forma gratuita.</p>
+<span class="precio-tag">$105.00</span>
+</div>
+<div class="tarjeta-promo">
+<span class="badge">Mayoristas de Guias</span>
+<h3>Descuento en Copias / Impresion</h3>
+<p>A partir de 100 paginas impresas en un mismo archivo (Blanco y Negro), el costo baja automaticamente en mostrador.</p>
+<span class="precio-tag">$0.70 por hoja</span>
+</div>
+<div class="tarjeta-promo">
+<span class="badge">Cumpleaños Listo</span>
+<h3>Combo Regalo Practico</h3>
+<p>En la compra de una carpeta de diseno y un juego de boligrafos de gel, la envoltura en bolsa kraft tradicional va por nuestra cuenta.</p>
+<span class="precio-tag">Envoltura Incluida</span>
+</div>
+</div>
+</section>
+<section id="precios" class="seccion">
+<h2>Tabla General de Tarifas de Servicio</h2>
+<p class="subtitulo">Consulta nuestro listado oficial de precios para llevar un control exacto de tus gastos escolares.</p>
+<table>
+<thead>
+<tr>
+<th>Detalle del Servicio de Mostrador</th>
+<th>Costo Regular</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Copia o Impresion Tamano Carta Blanco/Negro (Laser de alta velocidad)</td>
+<td>$1.00</td>
+</tr>
+<tr>
+<td>Impresion Color Tamano Carta (Papel Bond estandar de 75g)</td>
+<td>$5.00</td>
+</tr>
+<tr>
+<td>Engargolado Espiral Plastico Chico (De 1 a 50 hojas, incluye pastas plasticas)</td>
+<td>$20.00</td>
+</tr>
+<tr>
+<td>Engargolado Espiral Plastico Grande (Mas de 100 hojas, incluye pastas plasticas)</td>
+<td>$35.00</td>
+</tr>
+<tr>
+<td>Enmicado Termico Rigido Tamano Carta</td>
+<td>$20.00</td>
+</tr>
+<tr>
+<td>Enmicado Termico Rigido Tipo Credencial</td>
+<td>$10.00</td>
+</tr>
+<tr>
+<td>Escaneo de Documentos Fisicos (Por pagina enviada a formato PDF digital)</td>
+<td>$2.00</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top: 30px;">
+<details>
+<summary>Que tipo de formato es el ideal para mandar mis impresiones?</summary>
+<p>Se recomienda rigurosamente exportar tus documentos a formato PDF. Esto garantiza que los margenes, fuentes, imagenes o tablas no se muevan ni sufran desajustes al momento de abrirse en los equipos de impresion de la papeleria.</p>
+</details>
+<details>
+<summary>Se pueden realizar pedidos de utiles que no esten en la lista?</summary>
+<p>Claro que si, puedes utilizar el cuadro de texto del formulario de abajo para describir el material especifico que estas buscando. Revisamos disponibilidad en el almacen de inmediato.</p>
+</details>
+</div>
+<div class="bloque-informativo">
+<h3>Transparencia de Entorno Informativo</h3>
+<p>Este espacio web opera bajo una estructura estrictamente informativa y publicitaria orientada al desarrollo escolar:</p>
+<ul>
+<li>El catalogo de productos y costos son vigentes para atencion directa en mostrador.</li>
+<li>Los modulos de contacto sirven de puente digital interactivo para agilizar la preparacion de cotizaciones y materiales de trabajo.</li>
+</ul>
+</div>
+</section>
+<section id="contacto" class="seccion">
+<h2>Genera tu Cotizacion o Pedido</h2>
+<p class="subtitulo">Ingresa tus datos y los materiales solicitados. Nuestro sistema estructurara el mensaje de texto de manera automatica.</p>
+<form id="formularioContacto" onsubmit="enviarWhatsApp(event)">
+<label>Nombre del Solicitante</label>
+<input type="text" id="nombre" placeholder="Escribe tu nombre y apellido" required>
+<label>Canal de Correo (Opcional)</label>
+<input type="email" id="correo" placeholder="nombre@ejemplo.com">
+<label>Tipo de Servicio Solicitado</label>
+<select id="categoria">
+<option value="Surtido de utiles escolares">Surtido de utiles escolares</option>
+<option value="Impresiones y Engargolado">Impresiones y Engargolado</option>
+<option value="Compra de regalos / novedades">Compra de regalos / novedades</option>
+<option value="Cotizacion general mixta">Cotizacion general mixta</option>
+</select>
+<label>Detalle de tu Lista o Instrucciones de Impresion</label>
+<textarea rows="4" id="mensaje" placeholder="Ejemplo: Necesito 2 cuadernos profesionales cuadro grande, un juego de geometria y engargolar un PDF de 40 paginas..." required></textarea>
+<button type="submit">Generar Mensaje para WhatsApp</button>
+</form>
+<a href="https://wa.me/524191227638" class="btn-whatsapp" target="_blank">Chat de Atencion Directa</a>
+</section>
+</main>
+<footer>
+<p>Ubicacion Fisica: Barrio el potrerito en zamorano colon  queretaro </p>
+<p>Horario Comercial: Lunes a Viernes de 8:00 AM a 4:00 PM - Sabados y domingos de 9:00 AM a 4:00 PM</p>
+<p> <time datetime="2026">2026</time> Papeleria Perez - Proyecto Escolar de Gestion Comercial y Difusion Informativa Web</p>
+</footer>
+<script>
+function enviarWhatsApp(event) {
+event.preventDefault();
+var nombre = document.getElementById('nombre').value;
+var correo = document.getElementById('correo').value;
+var categoria = document.getElementById('categoria').value;
+var mensaje = document.getElementById('mensaje').value;
+if (correo.trim() === "") { correo = "No proporcionado"; }
+var telefono = "524191227638"; 
+var texto = "*Nueva Consulta Comercial - Papeleria Perez*%0A%0A" + 
+"*Cliente:* " + nombre + "%0A" + 
+"*Correo:* " + correo + "%0A" + 
+"*Servicio:* " + categoria + "%0A" + 
+"*Detalles:* " + mensaje;
+var enlace = "https://wa.me/" + telefono + "?text=" + texto;
+window.open(enlace, '_blank');
+}
+</script>
+</body>
+</html>
